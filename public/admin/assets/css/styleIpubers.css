@@ -1,0 +1,251 @@
+/* MEDIA INFORMASI IPUBERS */
+* {
+    font-family: "Inter", sans-serif !important;
+}
+
+body {
+    background-image: url('../../../img/bground.png') !important;
+    background-size: cover;
+}
+
+.header h5 {
+    font-weight: 700;
+    color: #34A500;
+    margin-top: 30px;
+}
+
+.header p {
+    font-size: 12px;
+}
+
+.header .atas {
+    margin-top: -10px;
+}
+
+.header .bawah {
+    margin-top: -20px;
+}
+
+.header span {
+    font-weight: 800;
+}
+
+
+.kotak {
+    padding: 20px 60px;
+    box-shadow: 3px 4px 9.899999618530273px 0px #00000066;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.kotakAwal {
+    padding: 0 182px
+}
+
+.kotak p {
+    font-size: 16px;
+    color: #34A500;
+    font-weight: 700;
+}
+
+.kotak .btnBulat P {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+
+.kotak .btnBulat:hover {
+    background-color: #1b5500;
+}
+
+.kotak .btnBulat {
+    background-color: #34A500;
+    border-radius: 40px;
+    margin-top: 10px;
+}
+
+.pengecer {
+    background-color: #34A500;
+    border-bottom-right-radius: 80px;
+}
+
+.pengecer .row {
+    padding-left: 46px;
+    padding-top: 30px;
+
+}
+
+.pengecer h2 {
+    color: white;
+    font-weight: 700;
+}
+
+.pengecer .gmbr1 {
+    position: relative;
+    margin-top: -25px;
+}
+
+.pengecer .gmbr2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Body */
+.body {
+    padding: 0 30px;
+}
+
+.body .button {
+    background-color: #34A500;
+    border-radius: 40px;
+    margin-top: 15px;
+    padding: 15px 25px;
+}
+
+.body .button:hover {
+    background-color: #247200;
+}
+
+.body a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer p {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+
+
+.penebusan h2 {
+    font-weight: 800;
+    color: #34A500;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.detail a {
+    color: rgb(0, 105, 224);
+    font-weight: 700;
+}
+
+.detail li {
+    margin-top: 20px;
+}
+
+.detail .CS li {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.video {
+    width: 90%;
+    /* Lebar yang Anda inginkan untuk video */
+}
+
+iframe {
+    width: 100%;
+}
+
+
+
+/* Petani */
+.petani h2 {
+    margin-top: 30px;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+.kotakBaru .button2 {
+    background-color:#EFFEB9 !important;
+    color: red;
+    margin-top: 7px;
+}
+
+
+.kotakBaru .button2:hover {
+    background-color: #c2ce98 !important;
+}
+
+.button2 a {
+    color: #34a500;
+    padding: 15px 2px;
+    font-size: 16px;
+    width: 60%;
+    display: inline-block;
+}
+.accordion-button {
+    border-radius: 40px !important;
+    background-color: #34a500 !important;
+    margin-top: 18px;
+    color: white !important;
+    text-align: center !important;
+    font-size: 16px;
+    padding: 18px !important;
+    display: block;
+}
+
+.accordion .accordion-item.active {
+    box-shadow: none !important;
+}
+
+
+.keluarga h3, .poktan h3 {
+    background-color: #34a500;
+    padding: 20px;
+    color: white;
+    font-weight: 700;
+}
+
+
+.bungkus {
+    padding: 0 120px;
+}
+.skuasa {
+    background-color: #34a500;
+    padding: 18px;
+    border-radius: 30px;
+}
+
+.skuasa p {
+    font-size: 18px;
+    font-weight: 600;
+    display: contents;
+}
+
+.skuasa img {
+    width: 23px;
+    margin-right: 40px;
+}
+/* Responsif */
+@media screen and (max-width: 991px) {
+    .kotakAwal {
+        padding: 0 0;
+    }
+
+    .kotakAwal .petani {
+        margin-top: 40px;
+    }
+
+    .kotak {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .kotakAwal .row {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 521px) {
+    .bungkus {
+            padding: 0 70px;
+        }
+}
