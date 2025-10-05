@@ -624,7 +624,7 @@ class Controller extends BaseController
 
         $room = tb_roomAudit::findOrFail($room_id);
 
-        tb_hasilpengamatan::create([
+        Tb_hasilpengamatan::create([
             'namaAudit'    => $room->id,
             'tanggal'      => Carbon::now()->toDateString(),
             'kategori'     => $request->kategori,
@@ -813,26 +813,26 @@ class Controller extends BaseController
         $nikUser = Auth::user()->nik;
 
         // Data hasil pengamatan
-        $dataPengamatan = DB::table('tb_hasilpengamatan')
-            ->join('tb_roomAudit', 'tb_hasilpengamatan.namaAudit', '=', 'tb_roomAudit.id')
-            ->where('tb_hasilpengamatan.namaAudit', $room->id)
-            ->where('tb_hasilpengamatan.namaAuditor', $nikUser)
+        $dataPengamatan = DB::table('Tb_hasilpengamatan')
+            ->join('tb_roomAudit', 'Tb_hasilpengamatan.namaAudit', '=', 'tb_roomAudit.id')
+            ->where('Tb_hasilpengamatan.namaAudit', $room->id)
+            ->where('Tb_hasilpengamatan.namaAuditor', $nikUser)
             ->select(
-                'tb_hasilpengamatan.*',
+                'Tb_hasilpengamatan.*',
                 'tb_roomAudit.namaAudit as namaAudit_asli'
             )
             ->get();
 
         // Data temuan + foto (relasi lewat id_hasilpengamatan)
         $temuan = DB::table('tb_temuan')
-            ->leftJoin('tb_hasilpengamatan', 'tb_temuan.id_hasilpengamatan', '=', 'tb_hasilpengamatan.id')
+            ->leftJoin('Tb_hasilpengamatan', 'tb_temuan.id_hasilpengamatan', '=', 'Tb_hasilpengamatan.id')
             ->leftJoin('tb_foto_temuan', 'tb_temuan.id', '=', 'tb_foto_temuan.temuan_id')
             ->whereIn('tb_temuan.id_hasilpengamatan', $dataPengamatan->pluck('id')) // hanya ambil temuan dari hasil pengamatan yg ditampilkan
             ->select(
                 'tb_temuan.*',
                 'tb_temuan.deskripsi as deskripsi_pengamatan',
                 'tb_foto_temuan.foto as foto_temuan',
-                'tb_hasilpengamatan.namaAuditee as namaAuditee'
+                'Tb_hasilpengamatan.namaAuditee as namaAuditee'
             )
             ->get()
             ->groupBy('id'); // biar foto yang sama temuan dikelompokkan
@@ -850,11 +850,11 @@ class Controller extends BaseController
             ->whereHas('hasilPengamatan', function ($query) use ($nikUser) {
                 $query->where('namaAuditee', $nikUser);
             })
-            ->leftJoin('tb_hasilpengamatan', 'tb_temuan.id_hasilpengamatan', '=', 'tb_hasilpengamatan.id')
+            ->leftJoin('Tb_hasilpengamatan', 'tb_temuan.id_hasilpengamatan', '=', 'Tb_hasilpengamatan.id')
             ->select(
                 'tb_temuan.*',
                 'tb_temuan.deskripsi as deskripsi_pengamatan',
-                'tb_hasilpengamatan.namaAuditee as namaAuditee'
+                'Tb_hasilpengamatan.namaAuditee as namaAuditee'
             )
             ->where('status', "draft")
             ->get();
@@ -993,7 +993,7 @@ class Controller extends BaseController
     public function createTemuan(Request $request)
     {
         $request->validate([
-            'id_hasilpengamatan' => 'required|exists:tb_hasilpengamatan,id',
+            'id_hasilpengamatan' => 'required|exists:Tb_hasilpengamatan,id',
             'deskripsi' => 'required|string',
             'lokasi' => 'required|string',
             'elemen' => 'required|string',
@@ -1099,7 +1099,7 @@ class Controller extends BaseController
 
     public function selesaikanTemuan($id)
     {
-        DB::table('tb_hasilpengamatan')
+        DB::table('Tb_hasilpengamatan')
         ->where('id', $id)
         ->update(['status_final' => 'proses']);
 

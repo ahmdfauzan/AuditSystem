@@ -30,7 +30,7 @@ Route::get('/login', function () {
 
 
 // Hak Akses Auditor
-Route::middleware(['auth', 'cekLevel:Auditor,Auditee,Master'])->group(function () {
+Route::middleware(['auth', 'CekLevel:Auditor,Auditee,Master'])->group(function () {
     Route::get('MD-Auditee', [Controller::class, 'dataAuditee']);
     Route::get('MD-Auditor', [Controller::class, 'dataAuditor']);
     Route::put('/auditor/update-foto/{id}', [Controller::class, 'updateFotoAuditor'])->name('updateFotoAuditor');
@@ -73,11 +73,11 @@ Route::middleware(['auth', 'cekLevel:Auditor,Auditee,Master'])->group(function (
     Route::post('/storePenyelesaian', [Controller::class, 'storePenyelesaian'])->name('storePenyelesaian');
 });
 
-Route::middleware(['auth', 'cekLevel:Auditor,leadAuditor,Master'])->group(function () {
+Route::middleware(['auth', 'CekLevel:Auditor,leadAuditor,Master'])->group(function () {
     Route::get('/listRoom', [Controller::class, 'listRoom'])->name('listRoom');
 });
 // Hak Akses Master
-Route::middleware(['auth', 'cekLevel:Master'])->group(function () {
+Route::middleware(['auth', 'CekLevel:Master'])->group(function () {
 
     Route::post('/tambahUser', [Controller::class, 'tambahUser'])->name('user.store');
     Route::post('/user/update/{id}', [Controller::class, 'updateUser'])->name('user.update');
@@ -122,7 +122,7 @@ Route::middleware(['auth', 'cekLevel:Master'])->group(function () {
 
 
 // Validasi Login Master dan Lead Auditor
-Route::middleware(['auth', 'cekLevel:leadAuditor,Master'])->group(function () {
+Route::middleware(['auth', 'CekLevel:leadAuditor,Master'])->group(function () {
     Route::get('/dataRoom', [Controller::class, 'dataRoom'])->name('dataRoom');
     Route::post('/buatRoom', [Controller::class, 'createRoom'])->name('buatRoom');
     Route::delete('/deleteRoom/{id}', [Controller::class, 'Roomdestroy'])->name('deleteRoom');
